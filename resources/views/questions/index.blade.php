@@ -5,8 +5,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">All Questions</div>
-
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h2>All Questions</h2>
+                        <div class="ml-auto">
+                            <a class="btn btn-outline-secondary" href="{{ route('questions.create') }}">Ask a question</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     @foreach ($questions as $question)
                         <div class="media">
