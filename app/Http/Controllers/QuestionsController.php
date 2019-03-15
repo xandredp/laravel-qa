@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use Illuminate\Http\Request;
+use App\Http\Requests\AskQuestionRequest;
 
 class QuestionsController extends Controller
 {
@@ -27,5 +28,12 @@ class QuestionsController extends Controller
         $question = new Question();
 
         return view('questions.create', compact('question'));
+    }
+
+    // Seperated validation into seperate file
+    public function store(AskQuestionRequest $request) {
+        $request->user()->questions()->create($request->all());
+
+        return redirect()->route('questions.index')->with('success', 'Your question has been submitted.');
     }
 }
